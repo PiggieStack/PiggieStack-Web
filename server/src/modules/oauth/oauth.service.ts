@@ -116,13 +116,14 @@ import { Prisma } from "@prisma/client";
               // show error
             }
             const formattedDateOfBirth = new Date("1990-05-25").toISOString();
+            console.log(oAuthUserDetails.fullname);
             return await client.oAuthUser.create({
               data: {
                 type: oAuthSignUpDto.type,
                 email: oAuthSignUpDto.email,
                 oAuthUserDetails: {
                   create: {
-                    fullname: oAuthUserDetails.fullName || "",
+                    fullname: oAuthUserDetails.fullname,
                     username: "",
                     dateOfBirth: formattedDateOfBirth,
                     sector: "",
