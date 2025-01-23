@@ -3,13 +3,18 @@ import { useDashboard } from '../DashboardContainer';
 import './ai-board.theme.scss';
 
 export default function AgentsInput() {
-  const { aiMode } = useDashboard();
+  const { aiMode, showChat, setShowChat } = useDashboard();
+
+  const handleInput = () => {
+    setShowChat(!showChat);
+  };
+
   return (
     <div className="agent-input-container">
       <div className="agent-selection-container">
         <div className="input-container-main">
           <div className="input-container">
-            <textarea placeholder="Type your message..."></textarea>
+            <textarea onFocus={handleInput} onBlur={handleInput} placeholder="Type your message..."></textarea>
           </div>
           <div className="button-section"></div>
         </div>

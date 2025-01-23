@@ -6,7 +6,7 @@ import './ai-board.theme.scss';
 import EventsFeedContainer from '../EventsFeedContainer/EventsFeedContainer';
 
 export default function AIBoard() {
-  const { aiMode } = useDashboard();
+  const { aiMode, showChat } = useDashboard();
   const styleObject = aiMode ? {} : { padding: '0 10%' };
 
   return (
@@ -17,7 +17,7 @@ export default function AIBoard() {
         }}
         className="main-panel"
       >
-        {aiMode ? <ResultBoard /> : <EventsFeedContainer />}
+        {aiMode ? <ResultBoard /> : showChat ? <></> : <EventsFeedContainer />}
       </div>
       <AgentsInput />
     </div>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CardHeader from './CardHeader';
 import ThemeButton from '../Buttons/ThemeButton';
 import './container.theme.scss'
+import { useDashboard } from '../../Modules/Dashboard/DashboardContainer/DashboardContainer';
 
 export default function ResizableContainer({
     maximizeHeightInPercentage = 25,
@@ -13,6 +14,11 @@ export default function ResizableContainer({
     title
   }) {
     const [isMaximized, setIsMaximized] = useState(false);
+    const { showChat } = useDashboard();
+
+    useEffect(() => {
+      setIsMaximized(showChat);
+    }, [showChat]);
   
     const toggleMaximize = () => {
       setIsMaximized((prevState) => !prevState);

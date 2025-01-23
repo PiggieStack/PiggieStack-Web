@@ -14,9 +14,10 @@ export const useDashboard = () => {
 const DashboardProvider = ({ children }) => {
   const [aiMode, setAiMode] = useState(false);
   const [eventsData, setEventsData] = useState([]);
+  const [showChat, setShowChat] = useState(false);
 
   return (
-    <DashboardContext.Provider value={{ aiMode, setAiMode, eventsData }}>
+    <DashboardContext.Provider value={{ aiMode, setAiMode, eventsData, showChat, setShowChat }}>
       {children}
     </DashboardContext.Provider>
   );
